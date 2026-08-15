@@ -1,0 +1,29 @@
+{
+  "name": "ops-decision-mcp",
+  "version": "1.0.0",
+  "description": "An MCP server that gives AI agents decision-support tools over internal business operations knowledge (runbooks, escalation policy, vendor SLAs) using lightweight retrieval-augmented search.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "ops-decision-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').cpSync('src/knowledge-base','dist/knowledge-base',{recursive:true})\"",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["mcp", "model-context-protocol", "ai-agents", "decision-engineering", "rag"],
+  "author": "Vijayanth Bonda",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^22.9.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
