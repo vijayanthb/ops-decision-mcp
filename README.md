@@ -1,5 +1,7 @@
 # ops-decision-mcp
 
+**Status: ✅ Live & verified** — built, compiled, connected to Claude Desktop, and tested end-to-end with real queries against the live tool. Not a mockup or a scaffold — see "Verified live" below.
+
 An MCP (Model Context Protocol) server that gives any MCP-compatible AI agent
 (Claude Desktop, Claude Code, Cursor, etc.) decision-support tools over
 internal business-operations knowledge: incident escalation policy, vendor
@@ -64,14 +66,26 @@ Restart Claude Desktop and ask it something like *"What's our escalation
 policy for a SEV-1 GPU issue?"* — it will call `search_ops_docs` or
 `triage_incident` automatically.
 
-## Verifying it works without a GUI
+## Verified live
 
-The repo includes a raw JSON-RPC test harness (see `AGENTS.md` for the
-pattern) that spawns the server and sends real `initialize`, `tools/list`,
-and `tools/call` messages over stdio — the same protocol Claude Desktop
-uses. All three tools were verified end-to-end this way: correct tool
-listing, correct ranked retrieval results with source citations, and
-correct approval-tier logic (including the SEV-1 fast-track exception).
+This isn't just compiled — it's been run and queried for real.
+
+**Protocol-level test:** the repo includes a raw JSON-RPC test harness (see
+`AGENTS.md` for the pattern) that spawns the server and sends real
+`initialize`, `tools/list`, and `tools/call` messages over stdio — the same
+protocol Claude Desktop uses. All three tools were verified end-to-end this
+way: correct tool listing, correct ranked retrieval results with source
+citations, and correct approval-tier logic (including the SEV-1 fast-track
+exception).
+
+**Live in Claude Desktop:** connected as a local MCP server and queried
+directly. Example — asking *"What's our escalation policy for a SEV-1 GPU
+issue?"* returns the actual severity definition, the correct escalation
+path (page the on-call lead, notify VP Ops within 15 minutes, war room
+opens automatically), and the right vendor path for hardware replacement
+(Vendor A first, 24-hour expedited RMA with VP approval, advance
+replacement above $2M annual spend) — all pulled from the knowledge base,
+not guessed.
 
 ## Extending this
 
