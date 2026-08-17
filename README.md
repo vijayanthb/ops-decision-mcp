@@ -8,17 +8,17 @@ internal business-operations knowledge: incident escalation policy, vendor
 SLAs, and procurement approval rules.
 
 Built as a reference implementation of the kind of internal tool a Decision
-Engineer ships — small, real, and immediately useful to a non-technical
-team through an AI agent they already use. Point Claude Desktop at this
-server and it can answer "who approves a $50K purchase" or "what's the
-RMA policy for our primary GPU vendor" by actually reading the internal
-docs, not guessing.
+Engineer or AI-tooling engineer ships — small, real, and immediately useful
+to a non-technical team through an AI agent they already use. Point Claude
+Desktop at this server and it can answer "who approves a $50K purchase" or
+"what's the RMA policy for our primary GPU vendor" by actually reading the
+internal docs, not guessing.
 
 ## Why this exists
 
-I built this to demonstrate the specific skills in Fluidstack's Decision
-Engineer, Business Operations role: shipping AI-powered internal tools,
-building and using MCP servers, integrating LLMs with internal systems, and
+I built this to demonstrate practical skills for AI-tooling / business-
+operations engineering roles: shipping AI-powered internal tools, building
+and using MCP servers, integrating LLMs with internal systems, and
 maintaining shared AI infrastructure (`AGENTS.md` / `SKILLS.md`) that other
 agents and teammates can pick up. Everything here is real and runnable —
 not a mockup.
@@ -93,10 +93,9 @@ not guessed.
   call to Bedrock Titan Embeddings, OpenAI, or Anthropic — the `search()`
   function signature stays the same, so nothing else in the server needs to
   change.
-- **Real internal systems:** the JD calls for Slack/GitHub/Notion/JIRA/
-  Salesforce integrations. The natural next tools here would be
-  `create_jira_ticket_from_incident` or `post_escalation_to_slack`, following
-  the same pattern documented in `AGENTS.md`.
+- **Real internal systems:** natural next tools here would be
+  `create_jira_ticket_from_incident` or `post_escalation_to_slack`,
+  following the same pattern documented in `AGENTS.md`.
 - **More knowledge:** drop new `.md` files into `src/knowledge-base/` — no
   code changes needed, they're picked up automatically at build time.
 
